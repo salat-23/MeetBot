@@ -17,6 +17,7 @@ services:
       - PROXY_PASSWORD=${PROXY_PASSWORD}
     volumes:
       - ./data:/var/app/data
+    restart: always
   db:
     image: 'postgres:13.1-alpine'
     container_name: dbtgbot
@@ -25,6 +26,7 @@ services:
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
+    restart: always
 volumes:
   postgres_volume: {}
 
