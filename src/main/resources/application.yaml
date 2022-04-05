@@ -3,7 +3,7 @@ spring:
   datasource:
     url: ${CONNECTION_STRING:jdbc:postgresql://localhost:5432/postgres}
     username: postgres
-    password: psqlstrongpass
+    password: postgres
 
   liquibase:
     change-log: classpath:db/changelog/changelog-master.xml
