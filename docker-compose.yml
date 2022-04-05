@@ -1,0 +1,33 @@
+version: '2'
+
+services:
+  app:
+    image: 'salat23/znakomstvabot:latest'
+    container_name: tgbotapp
+    depends_on:
+      - db
+    links:
+      - "db:db"
+    environment:
+      - CONNECTION_STRING=jdbc:postgresql://db:5432/postgres
+    networks:
+      - internal
+  db:
+    image: 'postgres:13.1-alpine'
+    container_name: dbtgbot
+    volumes:
+      - postgres_volume:/var/lib/tgbot/postgres
+    ports:
+      - "5433:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    networks:
+      - internal
+networks:
+  internal:
+    internal: true
+    driver: bridge
+volumes:
+  postgres_volume: {}
+

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Keywords>
+    <Keyword type="yes">да</Keyword>
+    <Keyword type="yes">ага</Keyword>
+    <Keyword type="yes">так точно</Keyword>
+    <Keyword type="yes">именно</Keyword>
+    <Keyword type="yes">конечно</Keyword>
+    <Keyword type="yes">естественно</Keyword>
+    <Keyword type="yes">давай</Keyword>
+    <Keyword type="no">не</Keyword>
+    <Keyword type="no">нет</Keyword>
+    <Keyword type="no">ненадо</Keyword>
+    <Keyword type="no">неа</Keyword>
+    <Keyword type="no">ненене</Keyword>
+    <Keyword type="no">давай другое</Keyword>
+</Keywords>

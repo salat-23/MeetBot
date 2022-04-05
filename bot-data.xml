@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Responses>
+    <Response type="unknown">
+        <Any>Неизвестная команда!</Any>
+        <Male>Эй парень, я не знаю такой команды.</Male>
+        <Female>Ты ахуела сука?</Female>
+    </Response>
+
+    <Response type="unknown">
+        <Any>Нихуя не понял, но очень интересно!</Any>
+    <!--    <Male>Эй пацан, или может не пацан, я не понял что ты мне написал</Male>
+        <Female>Солнышко, я не понимаю что ты от меня хочешь</Female>-->
+    </Response>
+
+    <Response type="unknown">
+        <Any>Нихуя не понял, но очень интересно!</Any>
+        <Male>Эй пацан, или может не пацан, я не понял что ты мне написал</Male>
+        <Female>НАТАША, я ни панимаю что ты от миня хочэж</Female>
+    </Response>
+
+    <Response type="welcome">
+        <Any>ЗДАРОВА!!!!! Готов знакомится?</Any>
+    </Response>
+
+    <Response type="welcome">
+        <Any>alekum assalam! Найдем тебе самца или самку!!!!</Any>
+    </Response>
+
+    <Response type="welcome">
+        <Any>Приветули красотули! Ты готов(a) знакомиться?  </Any>
+    </Response>
+
+
+    <Response type="nameAsk">
+        <Any>Как тебя зовут?</Any>
+    </Response>
+
+    <Response type="nameAsk">
+        <Any>Как тебя мне звать?</Any>
+    </Response>
+
+    <Response type="nameAsk">
+        <Any>Как тебя звать?</Any>
+    </Response>
+    <Response type="nameAsk">
+        <Any>Какое имя хочешь?</Any>
+    </Response>
+    <Response type="nameAsk">
+        <Any>Давай начнем, как тебя зовут?</Any>
+    </Response>
+
+
+
+    <Response type="nameConfirm">
+        <Any>Точно хочешь такое имя - %name%?</Any>
+    </Response>
+    <Response type="nameConfirm">
+        <Any>Хочешь чтобы я звал тебя %name%?</Any>
+    </Response>
+
+    <Response type="nameAfter">
+        <Any>Окей буду звать тебя %name%</Any>
+    </Response>
+    <Response type="nameAfter">
+        <Any>Пусть будет %name%</Any>
+    </Response>
+    <Response type="nameAfter">
+        <Any>Хорошо, так и запишем)</Any>
+    </Response>
+
+    <Response type="nameDecline">
+        <Any>Окей не кипишуй, щяс все перепишим</Any>
+    </Response>
+    <Response type="nameDecline">
+        <Any>Ладно, забыли</Any>
+    </Response>
+    <Response type="nameDecline">
+        <Any>Хм, тогда забудем</Any>
+    </Response>
+
+    <Response type="nameWrong">
+        <Any>Ты ничего не попутал?</Any>
+    </Response>
+    <Response type="nameWrong">
+        <Any>Такое писать нельзя!</Any>
+    </Response>
+
+
+    <Response type="genderAsk">
+        <Any>Кто ты?</Any>
+    </Response>
+    <Response type="genderAsk">
+        <Any>Ты баба или мужик?</Any>
+    </Response>
+    <Response type="genderAsk">
+        <Any>М/Ж?</Any>
+    </Response>
+
+    <Response type="genderConfirm">
+        <Any>Твой пол - %gender%?</Any>
+        <Male>Ты точно парень?</Male>
+        <Female>Ты точно девушка?</Female>
+    </Response>
+
+    <Response type="genderAfter">
+        <Any>Теперь твой пол - %gender%?</Any>
+        <Male>Ладно, пацанчик)</Male>
+        <Female>Ладно, девка так девка</Female>
+    </Response>
+
+    <Response type="genderDecline">
+        <Any>Ну и где твоя уверенность? Даже пол назвать не можешь?</Any>
+    </Response>
+
+    <Response type="genderDecline">
+        <Any>Ну и где твоя уверенность? Загляни в шатны и наконец определись КТО ТЫ! Парень или девушка?</Any>
+    </Response>
+
+    <Response type="targetAsk">
+        <Any>Кого ты ищешь?</Any>
+        <Male>Кого ищешь казанова?</Male>
+        <Female>Кого ищешь зая?</Female>
+    </Response>
+
+    <Response type="targetAsk">
+        <Any>Кого мы ищем?</Any>
+        <Male>Кого ищешь самэц?</Male>
+        <Female>Кого ищешь милая?</Female>
+    </Response>
+
+    <Response type="targetAsk">
+        <Any>Кого ты ищешь?</Any>
+        <Male>Мамин бандит, кого искать будем?</Male>
+        <Female>Королева, кого ищем?</Female>
+    </Response>
+
+    <Response type="targetAsk">
+        <Any>Кого мы ищем?</Any>
+        <Male>%name%, кого искать будем?</Male>
+        <Female>%name%, кого ищем?</Female>
+    </Response>
+
+    <Response type="targetConfirm">
+        <Any>Точно?)</Any>
+        <Male>Ты уверен?)</Male>
+        <Female>Ты уверена?)</Female>
+    </Response>
+
+    <Response type="targetDecline">
+        <Any>Ну ёмае! Ладно, давай всё сначала.. </Any>
+    </Response>
+
+    <Response type="cityAsk">
+        <Any>Рассказывай, ты из какого города? </Any>
+    </Response>
+
+    <Response type="cityConfirm">
+        <Any>Точно?</Any>
+    </Response>
+
+    <Response type="cityAfter">
+        <Any>Ну как скажешь! Твой город - %city%</Any>
+    </Response>
+
+    <Response type="cityDecline">
+        <Any>Снова этот город записывать... Говори свой город!</Any>
+    </Response>
+
+    <Response type="cityWrong">
+        <Any>Я о таком городе впервые слышу. Ты точно не придумываешь?)</Any>
+    </Response>
+
+    <Response type="ageAsk">
+        <Any>Сколько тебе лет?</Any>
+    </Response>
+
+    <Response type="ageConfirm">
+        <Any>Точно?</Any>
+    </Response>
+
+    <Response type="ageAfter">
+        <Any>Ладно, договорились. Тебе %age%, так и запишу</Any>
+    </Response>
+
+    <Response type="ageDecline">
+        <Any>Ну давай давай, пиши мне свой возраст!</Any>
+    </Response>
+
+    <Response type="ageTooLow">
+        <Any>Тебе слишком мало лет, когда вырастешь - приходи!</Any>
+        <Male>Писюн еще не вырос, а ты себе уже само4ek ищешь?))</Male>
+        <Female>Чао пэрсик, дозревай</Female>
+    </Response>
+
+    <Response type="ageTooHigh">
+        <Any>Тебе пора в дом пристарелых!</Any>
+    </Response>
+
+    <Response type="ageWrong">
+        <Any>Неправильный формат возраста! Напиши цифрами сколько тебе лет</Any>
+    </Response>
+
+
+    <Response type="targetMinAgeAsk">
+        <Any>Минимальное кол-во лет кого ты ищешь?</Any>
+    </Response>
+    <Response type="targetMaxAgeAsk">
+        <Any>Максимальное кол-во лет кого ты ищешь?</Any>
+    </Response>
+
+    <Response type="targetAgeConfirm">
+        <Any>%target_min% - %target_max% подойдет?</Any>
+    </Response>
+
+    <Response type="targetAgeAfter">
+        <Any>Отлично!</Any>
+    </Response>
+
+    <Response type="targetAgeDecline">
+        <Any>Окей, давай с начала...</Any>
+    </Response>
+
+    <Response type="targetAgeTooLow">
+        <Any>Эй, так не пойдет, надо больше!</Any>
+    </Response>
+
+    <Response type="targetAgeTooHigh">
+        <Any>Блять, это не годится! Давай меньше!</Any>
+    </Response>
+
+    <Response type="targetAgeWrong">
+        <Any>Нихуя не понял, сначала!</Any>
+    </Response>
+
+
+
+    <Response type="bioAsk">
+        <Any>Теперь расскажи о себе. Кого хочешь найти, чем хочешь заняться, сколько хочешь этим заниматься и всякое такое бла-бла...</Any>
+    </Response>
+
+    <Response type="bioConfirm">
+        <Any>Сохраняем?</Any>
+    </Response>
+
+    <Response type="bioAfter">
+        <Any>Сохранил. Идём дальше короче</Any>
+    </Response>
+
+    <Response type="bioDecline">
+        <Any>Не подходит? Пиши по новой тогда...</Any>
+    </Response>
+
+    <Response type="bioWrong">
+        <Any>Неправильный формат описания</Any>
+    </Response>
+
+    <Response type="photoAsk">
+        <Any>Отправляй свою фотку</Any>
+        <Male>Теперь отправляй фотку. Скинешь член - забаню! (не шучу блять)</Male>
+        <Female>Теперь отправляй фотку. Только пожалуйста, не надо никаких интимок!</Female>
+    </Response>
+
+    <Response type="photoConfirm">
+        <Any>Сохраняем фото профиля?</Any>
+        <Male>Ты уверен?</Male>
+        <Female>Ты уверена?</Female>
+    </Response>
+
+    <Response type="photoAfter">
+        <Any>Отлично! Я СОХРАНИЛ</Any>
+        <Male>Фото сохранено</Male>
+        <Female>Сохранил фотку, пойду дрочить на тебя крошка</Female>
+    </Response>
+
+    <Response type="photoAfter">
+        <Any>Норм</Any>
+        <Female>Ебабельно!</Female>
+    </Response>
+
+    <Response type="photoDecline">
+        <Any>Отправляй фото заново</Any>
+    </Response>
+
+    <Response type="menuOptions">
+        <Any>Что будем делать?</Any>
+    </Response>
+
+    <Response type="formSuggest">
+        <Any>%o_name%, %o_age%, %o_gender% - "%o_bio%"</Any>
+    </Response>
+
+    <Response type="notificationLiked">
+        <Any>Ты кому-то нравишься. Узнаем кому?</Any>
+    </Response>
+
+    <Response type="notificationMutual">
+        <Any>Твоя анкета понравилась пользователю - %o_link%</Any>
+        <Male>Ты понравился этой су4ке - %o_link%. Действуй! </Male>
+        <Female>Ты понравилась %o_link%, надеюсь у вас всё получится! </Female>
+    </Response>
+
+    <Response type="notificationMutual">
+        <Any>Ты кому-то нравишься! - %o_link%</Any>
+        <Male>Эта самка хочет тебя- %o_link%. Действуй! </Male>
+    </Response>
+
+    <Response type="notificationMutual">
+        <Any>Ты кому-то нравишься! - %o_link%</Any>
+        <Male>Мне кажется, или эта девочка в восторге от тебя - %o_link%. Действуй! </Male>
+    </Response>
+
+    <Response type="notificationMutual">
+        <Any>Ты кому-то нравишься! - %o_link%</Any>
+        <Male>Мне кажется, или у этой суки протечка от твоего вида?) - %o_link%. Действуй! </Male>
+    </Response>
+
+    <Response type="notificationMutual">
+        <Any>Ты кому-то нравишься! - %o_link%</Any>
+        <Male>Мне кажется, или эта девушка без ума от тебя? - %o_link%. Действуй! </Male>
+    </Response>
+
+    <Response type="noForms">
+        <Any>Сорян, но походу у меня закончились анкеты... Давай ты прийдешь завтра и посмотришь новых людей?</Any>
+        <Male>Сорян, но походу у меня закончились анкеты самок... Давай ты прийдешь завтра и мы найдем тебе новую?</Male>
+        <Female>Прости, но у меня закончились анкеты... Заходи завтра, и мы найдем тебе порядочного бойфренда</Female>
+    </Response>
+
+    <Response type="noLikes">
+        <Any>Все! Лайки закончились =(, но я перекидываю тебя на просмотр анкет, так что найди кого-нибудь))</Any>
+    </Response>
+
+</Responses>
+

@@ -1,0 +1,37 @@
+spring:
+
+  datasource:
+    url: ${CONNECTION_STRING:jdbc:postgresql://localhost:5432/postgres}
+    username: postgres
+    password: psqlstrongpass
+
+  liquibase:
+    change-log: classpath:db/changelog/changelog-master.xml
+    enabled: false
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+server:
+  port: 8080
+
+bot:
+  name: ${BOT_NAME:Шаловливый Мухраджабик}
+  token: ${BOT_TOKEN:5133092786:AAHddfxUtGKt1g2UXWGwk7r4rQKs_UtFwI8}
+  config_file_path: ${CONFIG_FILE_PATH:bot-data.xml}
+  confirmation_file_path: ${CONFIRMATION_FILE_PATH:confirmations.xml}
+  web:
+    login: muhrbot
+    password: 1234oijh6134jik
+  backup:
+    idtxtpath: id_backup.txt
+  dadata:
+    secret: f34431e193f1c9cc9c9ecafd68d5d9f48ceb9137
+    api: 77e35de67f0d4fb5b1ab8276b5a993282cac3ee4
+  storage:
+    user_path: ./data/users/
+  proxy:
+    host: ${PROXY_HOST}
+    port: ${PROXY_PORT}
+    login: ${PROXY_LOGIN}
+    password: ${PROXY_PASSWORD}
