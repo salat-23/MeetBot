@@ -17,8 +17,10 @@ jobs:
           password: ${{ secrets.DEPLOY_SERVER_PASSWORD }}
           script_stop: true
           script: |
-            cd ~/collector-goods
+            cd ~/tgbot
             git fetch --all
             git reset --hard origin/master
+            ./exports.sh
+
       - name: Final
         run: echo "Succesfully deployed"
