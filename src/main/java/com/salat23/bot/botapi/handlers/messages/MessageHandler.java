@@ -1,5 +1,6 @@
 package com.salat23.bot.botapi.handlers.messages;
 
+import com.salat23.bot.botapi.TelegramErrors;
 import com.salat23.bot.botapi.UserState;
 import com.salat23.bot.botapi.handlers.Handler;
 import com.salat23.bot.botapi.handlers.messages.sub_handlers.IMessageSubHandler;
@@ -7,6 +8,7 @@ import com.salat23.bot.models.User;
 import com.salat23.bot.repository.BoostRepository;
 import com.salat23.bot.repository.UserRepository;
 import org.springframework.stereotype.Component;
+import org.telegram.telegrambots.meta.api.methods.groupadministration.GetChat;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
@@ -46,9 +48,8 @@ public class MessageHandler extends Handler {
                 try {
                     doReprocess = (messageSubHandler.handle(user, messageText));
                 } catch (TelegramApiException e) {
-                    System.out.println(e.getMessage());
-                    if (e.getMessage().equals("Error sending message: [403] Forbidden: bot was blocked by the user"))
-                        System.out.println(true);
+                    if (e.getMessage().equals(TelegramErrors.BLOCKED_BY_USER.getError()))
+                        freezeUser(user);
                 }
             }
         }

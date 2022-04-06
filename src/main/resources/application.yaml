@@ -17,7 +17,7 @@ server:
 
 bot:
   name: ${BOT_NAME:Шаловливый Мухраджабик}
-  token: ${BOT_TOKEN:5133092786:AAHddfxUtGKt1g2UXWGwk7r4rQKs_UtFwI8}
+  token: ${BOT_TOKEN:5102081500:AAG9sKuRyVUq3ID_y1HwnuVQHuUPZ7Bxg_Y}
   config_file_path: ${CONFIG_FILE_PATH:bot-data.xml}
   confirmation_file_path: ${CONFIRMATION_FILE_PATH:confirmations.xml}
   web:

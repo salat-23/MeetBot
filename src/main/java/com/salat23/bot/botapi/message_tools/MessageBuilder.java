@@ -29,6 +29,21 @@ public class MessageBuilder {
     private final String CONFIRM_KEYBOARD_DECLINE = "Нет";
     private final String LOCATION_KEYBOARD_REQUEST = "Определить мой город";
 
+    private final String LIKE_TEXT = "\uD83D\uDC4D";
+    private final String DISLIKE_TEXT = "\uD83D\uDC4E";
+    private final String MENU_TEXT = "Назад в меню";
+
+    private final String SEE_LIKES_TEXT = "Посмотреть";
+
+    private final String MALE_BUTTON_TEXT = "Парень";
+    private final String FEMALE_BUTTON_TEXT = "Девушка";
+
+    private final String VIEW_MY_FORM_TEXT = "Моя анкета";
+    private final String EDIT_MY_FORM_TEXT = "Изменить анкету";
+    private final String BROWSE_FORMS = "Смотреть анкеты";
+    private final String BROWSE_LIKES = "Кому я нравлюсь?";
+
+
     public MessageBuilder(@Qualifier("XMLResponseParser") IResponseResourceProvider provider) {
         this.provider = provider;
     }
@@ -81,8 +96,7 @@ public class MessageBuilder {
     }
 
     private String createUserLink(User user) {
-        String userLink = "[" + user.getName() + "](tg://user?id=" + user.getId() + ")";
-        return userLink;
+        return "[" + user.getName() + "](tg://user?id=" + user.getId() + ")";
     }
 
     public String getMessageTextByType(ResponseTemplateTypes type) {
@@ -137,10 +151,6 @@ public class MessageBuilder {
         return markup;
     }
 
-    private final String LIKE_TEXT = "\uD83D\uDC4D";
-    private final String DISLIKE_TEXT = "\uD83D\uDC4E";
-    private final String MENU_TEXT = "Назад в меню";
-
     public InlineKeyboardMarkup getFormKeyboard() {
         InlineKeyboardMarkup markup = new InlineKeyboardMarkup();
         //Like button
@@ -177,7 +187,7 @@ public class MessageBuilder {
         return markup;
     }
 
-    private final String SEE_LIKES_TEXT = "Посмотреть";
+
 
     public InlineKeyboardMarkup getLikeReceivedKeyboard() {
         InlineKeyboardMarkup markup = new InlineKeyboardMarkup();
@@ -208,8 +218,7 @@ public class MessageBuilder {
         return ReplyKeyboardMarkup.builder().keyboardRow(keyboardRow).oneTimeKeyboard(true).build();
     }
 
-    private final String MALE_BUTTON_TEXT = "Парень";
-    private final String FEMALE_BUTTON_TEXT = "Девушка";
+
 
     public InlineKeyboardMarkup getGenderKeyboard() {
         InlineKeyboardMarkup markup = new InlineKeyboardMarkup();
@@ -235,10 +244,7 @@ public class MessageBuilder {
         return markup;
     }
 
-    private final String VIEW_MY_FORM_TEXT = "Моя анкета";
-    private final String EDIT_MY_FORM_TEXT = "Изменить анкету";
-    private final String BROWSE_FORMS = "Смотреть анкеты";
-    private final String BROWSE_LIKES = "Кому я нравлюсь?";
+
 
     public InlineKeyboardMarkup getMenuKeyboard() {
         InlineKeyboardMarkup markup = new InlineKeyboardMarkup();
