@@ -29,7 +29,7 @@ public class StartBrowsingLikesSubHandler implements ICallbackSubHandler {
 
     @Override
     public List<UserState> getSupportedUserStates() {
-        return List.of(UserState.IN_MENU);
+        return List.of(UserState.IN_MENU, UserState.FORM_BROWSING);
     }
 
     @Override
