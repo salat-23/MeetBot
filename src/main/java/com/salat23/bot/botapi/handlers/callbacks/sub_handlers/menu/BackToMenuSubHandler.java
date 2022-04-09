@@ -28,7 +28,7 @@ public class BackToMenuSubHandler implements ICallbackSubHandler {
 
     @Override
     public List<UserState> getSupportedUserStates() {
-        return List.of(UserState.FORM_BROWSING, UserState.FORM_MY);
+        return List.of(UserState.FORM_BROWSING, UserState.FORM_MY, UserState.LIKES_BROWSING);
     }
 
     @Override
