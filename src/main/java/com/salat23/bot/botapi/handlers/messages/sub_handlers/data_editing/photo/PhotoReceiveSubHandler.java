@@ -29,6 +29,14 @@ public class PhotoReceiveSubHandler implements IMessageSubHandler {
     @Override
     public boolean handle(User user, String message) throws TelegramApiException {
 
+
+        //TODO: get rid of hardcoded strings
+        if (message.equals("Оставить текущее") && user.getPhoto() != null) {
+            user.setState(UserState.ASK_CONFIRMING_PHOTO);
+            userRepository.save(user);
+            return true;
+        }
+
         //Set user state
         user.setState(UserState.ASK_PHOTO);
         userRepository.save(user);

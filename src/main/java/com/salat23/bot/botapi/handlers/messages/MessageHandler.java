@@ -74,5 +74,4 @@ public class MessageHandler extends Handler {
                 () -> new RuntimeException(
                         String.format("Could not found correct handler for state: %s", userState.toString())));
     }
-
 }

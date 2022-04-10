@@ -9,6 +9,7 @@ import com.salat23.bot.botapi.message_tools.ResponseTemplateTypes;
 import com.salat23.bot.models.User;
 import com.salat23.bot.repository.UserRepository;
 import org.springframework.stereotype.Component;
+import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 import java.util.List;
@@ -38,7 +39,14 @@ public class PhotoAskSubHandler implements IMessageSubHandler {
         String askPhoto = messageBuilder
                 .getMessageTextByType(ResponseTemplateTypes.PHOTO_ENTER_ASK, user.getGender());
         askPhoto = messageBuilder.buildAssembleText(new MessageContext(user), askPhoto);
-        Bot.getInstance().execute(messageBuilder.createMessage(user, askPhoto));
+
+        SendMessage sendMessage = messageBuilder.createMessage(user, askPhoto);
+
+        if (user.getPhoto() != null)
+            //TODO: get rid of hardcoded strings
+            sendMessage.setReplyMarkup(messageBuilder.getPreviousOptionKeyboard("Оставить текущее"));
+
+        Bot.getInstance().execute(sendMessage);
 
         return false;
     }
