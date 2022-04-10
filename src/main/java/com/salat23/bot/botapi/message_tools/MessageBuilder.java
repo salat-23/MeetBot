@@ -150,40 +150,40 @@ public class MessageBuilder {
                 .build();
     }
 
-    public InlineKeyboardMarkup getFormKeyboard() {
-        InlineKeyboardMarkup markup = new InlineKeyboardMarkup();
-        //Like button
-        InlineKeyboardButton likeButton = new InlineKeyboardButton(LIKE_TEXT);
-        likeButton.setCallbackData(Callbacks.ACCEPT.getCallback());
-        //Dislike button
-        InlineKeyboardButton dislikeButton = new InlineKeyboardButton(DISLIKE_TEXT);
-        dislikeButton.setCallbackData(Callbacks.DECLINE.getCallback());
+    public ReplyKeyboardMarkup getFormKeyboard() {
+        KeyboardRow keyboardLikeDislike = new KeyboardRow();
+        keyboardLikeDislike.add(
+                KeyboardButton.builder()
+                        .text(LIKE_TEXT)
+                        .build());
+        keyboardLikeDislike.add(
+                KeyboardButton.builder()
+                        .text(DISLIKE_TEXT)
+                        .build());
 
-        InlineKeyboardButton menuButton = new InlineKeyboardButton(MENU_TEXT);
-        menuButton.setCallbackData(Callbacks.BACK_TO_MENU.getCallback());
+        KeyboardRow keyboardBackToMenu = new KeyboardRow();
+        keyboardBackToMenu.add(
+                KeyboardButton.builder()
+                        .text(MENU_TEXT)
+                        .build()
+        );
 
-        markup.setKeyboard(List.of(
-                List.of(
-                        likeButton,
-                        dislikeButton
-                ),
-                List.of(menuButton)
-        ));
-
-        return markup;
+        return ReplyKeyboardMarkup.builder()
+                .keyboard(List.of(keyboardLikeDislike, keyboardBackToMenu))
+                .oneTimeKeyboard(true)
+                .resizeKeyboard(true)
+                .build();
     }
 
-    public InlineKeyboardMarkup getMyFormKeyboard() {
-        InlineKeyboardMarkup markup = new InlineKeyboardMarkup();
+    public ReplyKeyboardMarkup getMyFormKeyboard() {
+        KeyboardRow keyboardRow = new KeyboardRow();
+        keyboardRow.add(
+                KeyboardButton.builder()
+                        .text(MENU_TEXT)
+                        .build()
+        );
 
-        InlineKeyboardButton menuButton = new InlineKeyboardButton(MENU_TEXT);
-        menuButton.setCallbackData(Callbacks.BACK_TO_MENU.getCallback());
-
-        markup.setKeyboard(List.of(
-                List.of(menuButton)
-        ));
-
-        return markup;
+        return ReplyKeyboardMarkup.builder().keyboardRow(keyboardRow).resizeKeyboard(true).build();
     }
 
 
