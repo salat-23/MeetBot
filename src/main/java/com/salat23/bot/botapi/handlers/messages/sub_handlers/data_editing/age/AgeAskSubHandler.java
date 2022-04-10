@@ -9,6 +9,7 @@ import com.salat23.bot.botapi.message_tools.ResponseTemplateTypes;
 import com.salat23.bot.models.User;
 import com.salat23.bot.repository.UserRepository;
 import org.springframework.stereotype.Component;
+import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 import java.util.List;
@@ -37,7 +38,11 @@ public class AgeAskSubHandler implements IMessageSubHandler {
 
         String ageString = messageBuilder.getMessageTextByType(ResponseTemplateTypes.AGE_ENTER_ASK, user.getGender());
         ageString = messageBuilder.buildAssembleText(new MessageContext(user), ageString);
-        Bot.getInstance().execute(messageBuilder.createMessage(user, ageString));
+        SendMessage sendMessage = messageBuilder.createMessage(user, ageString);
+
+        if (user.getAge() != null)
+            sendMessage.setReplyMarkup(messageBuilder.getPreviousOptionKeyboard(user.getAge().toString()));
+        Bot.getInstance().execute(sendMessage);
 
         return false;
     }

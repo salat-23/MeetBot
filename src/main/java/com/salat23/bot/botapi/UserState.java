@@ -38,6 +38,7 @@ public enum UserState {
     START_REGISTRATION,
     IN_MENU,
     FORM_MY,
+    FORM_MY_VIEWING,
     FORM_NEXT,
     FORM_CONTINUE,
     FORM_BROWSING,

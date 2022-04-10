@@ -47,6 +47,7 @@ public class MessageHandler extends Handler {
                 IMessageSubHandler messageSubHandler = getCorrectHandler(user.getState());
                 try {
                     doReprocess = (messageSubHandler.handle(user, messageText));
+                    messageText = "";
                 } catch (TelegramApiException e) {
                     if (e.getMessage().equals(TelegramErrors.BLOCKED_BY_USER.getError()))
                         freezeUser(user);
@@ -74,5 +75,4 @@ public class MessageHandler extends Handler {
                 () -> new RuntimeException(
                         String.format("Could not found correct handler for state: %s", userState.toString())));
     }
-
 }

@@ -132,61 +132,59 @@ public class MessageBuilder {
         }
     }
 
-    public InlineKeyboardMarkup getConfirmKeyboard() {
-        InlineKeyboardMarkup markup = new InlineKeyboardMarkup();
+    public ReplyKeyboardMarkup getConfirmKeyboard() {
+        KeyboardRow keyboardRow = new KeyboardRow();
+        keyboardRow.add(
+                KeyboardButton.builder()
+                        .text(CONFIRM_KEYBOARD_ACCEPT)
+                        .build());
+        keyboardRow.add(
+                KeyboardButton.builder()
+                        .text(CONFIRM_KEYBOARD_DECLINE)
+                        .build());
 
-        InlineKeyboardButton yesButton = new InlineKeyboardButton(CONFIRM_KEYBOARD_ACCEPT);
-        yesButton.setCallbackData(Callbacks.ACCEPT.getCallback());
-
-        InlineKeyboardButton noButton = new InlineKeyboardButton(CONFIRM_KEYBOARD_DECLINE);
-        noButton.setCallbackData(Callbacks.DECLINE.getCallback());
-
-        markup.setKeyboard(List.of(
-                List.of(
-                        yesButton,
-                        noButton
-                )
-        ));
-
-        return markup;
+        return ReplyKeyboardMarkup.builder()
+                .keyboardRow(keyboardRow)
+                .oneTimeKeyboard(true)
+                .resizeKeyboard(true)
+                .build();
     }
 
-    public InlineKeyboardMarkup getFormKeyboard() {
-        InlineKeyboardMarkup markup = new InlineKeyboardMarkup();
-        //Like button
-        InlineKeyboardButton likeButton = new InlineKeyboardButton(LIKE_TEXT);
-        likeButton.setCallbackData(Callbacks.ACCEPT.getCallback());
-        //Dislike button
-        InlineKeyboardButton dislikeButton = new InlineKeyboardButton(DISLIKE_TEXT);
-        dislikeButton.setCallbackData(Callbacks.DECLINE.getCallback());
+    public ReplyKeyboardMarkup getFormKeyboard() {
+        KeyboardRow keyboardLikeDislike = new KeyboardRow();
+        keyboardLikeDislike.add(
+                KeyboardButton.builder()
+                        .text(LIKE_TEXT)
+                        .build());
+        keyboardLikeDislike.add(
+                KeyboardButton.builder()
+                        .text(DISLIKE_TEXT)
+                        .build());
 
-        InlineKeyboardButton menuButton = new InlineKeyboardButton(MENU_TEXT);
-        menuButton.setCallbackData(Callbacks.BACK_TO_MENU.getCallback());
+        KeyboardRow keyboardBackToMenu = new KeyboardRow();
+        keyboardBackToMenu.add(
+                KeyboardButton.builder()
+                        .text(MENU_TEXT)
+                        .build()
+        );
 
-        markup.setKeyboard(List.of(
-                List.of(
-                        likeButton,
-                        dislikeButton
-                ),
-                List.of(menuButton)
-        ));
-
-        return markup;
+        return ReplyKeyboardMarkup.builder()
+                .keyboard(List.of(keyboardLikeDislike, keyboardBackToMenu))
+                .oneTimeKeyboard(true)
+                .resizeKeyboard(true)
+                .build();
     }
 
-    public InlineKeyboardMarkup getMyFormKeyboard() {
-        InlineKeyboardMarkup markup = new InlineKeyboardMarkup();
+    public ReplyKeyboardMarkup getMyFormKeyboard() {
+        KeyboardRow keyboardRow = new KeyboardRow();
+        keyboardRow.add(
+                KeyboardButton.builder()
+                        .text(MENU_TEXT)
+                        .build()
+        );
 
-        InlineKeyboardButton menuButton = new InlineKeyboardButton(MENU_TEXT);
-        menuButton.setCallbackData(Callbacks.BACK_TO_MENU.getCallback());
-
-        markup.setKeyboard(List.of(
-                List.of(menuButton)
-        ));
-
-        return markup;
+        return ReplyKeyboardMarkup.builder().keyboardRow(keyboardRow).resizeKeyboard(true).build();
     }
-
 
 
     public InlineKeyboardMarkup getLikeReceivedKeyboard() {
@@ -215,38 +213,46 @@ public class MessageBuilder {
                         .build()
         );
 
-        return ReplyKeyboardMarkup.builder().keyboardRow(keyboardRow).oneTimeKeyboard(true).build();
+        return ReplyKeyboardMarkup.builder().keyboardRow(keyboardRow).oneTimeKeyboard(true).resizeKeyboard(true).build();
     }
 
-
-
-    public InlineKeyboardMarkup getGenderKeyboard() {
-        InlineKeyboardMarkup markup = new InlineKeyboardMarkup();
-
-        //Button for viewing your form
-        InlineKeyboardButton maleButton = InlineKeyboardButton.builder()
-                .text(MALE_BUTTON_TEXT)
-                .callbackData(Callbacks.MALE.getCallback())
-                .build();
-
-        //Button for editing your form
-        InlineKeyboardButton femaleButton = InlineKeyboardButton.builder()
-                .text(FEMALE_BUTTON_TEXT)
-                .callbackData(Callbacks.FEMALE.getCallback())
-                .build();
-
-        markup.setKeyboard(
-                List.of(
-                        List.of(maleButton, femaleButton)
-                )
+    public ReplyKeyboardMarkup getPreviousOptionKeyboard(String previousOption) {
+        KeyboardRow keyboardRow = new KeyboardRow();
+        keyboardRow.add(
+                KeyboardButton.builder()
+                        .text(previousOption)
+                        .build()
         );
 
-        return markup;
+        return ReplyKeyboardMarkup.builder()
+                .keyboardRow(keyboardRow)
+                .oneTimeKeyboard(true)
+                .resizeKeyboard(true)
+                .build();
+    }
+
+    public ReplyKeyboardMarkup getGenderKeyboard() {
+        KeyboardRow keyboardRow = new KeyboardRow();
+        keyboardRow.add(
+                KeyboardButton.builder()
+                        .text(GenderEnum.MAN.getShortName())
+                        .build()
+        );
+        keyboardRow.add(
+                KeyboardButton.builder()
+                        .text(GenderEnum.WOMAN.getShortName())
+                        .build()
+        );
+
+        return ReplyKeyboardMarkup.builder()
+                .keyboardRow(keyboardRow)
+                .oneTimeKeyboard(true)
+                .resizeKeyboard(true)
+                .build();
     }
 
 
-
-    public InlineKeyboardMarkup getMenuKeyboard() {
+    public ReplyKeyboardMarkup getMenuKeyboard() {
         InlineKeyboardMarkup markup = new InlineKeyboardMarkup();
 
         //Button for viewing your form
@@ -260,7 +266,7 @@ public class MessageBuilder {
                 .text(EDIT_MY_FORM_TEXT)
                 .callbackData(Callbacks.EDIT_MY_FORM.getCallback())
                 .build();
- 
+
         //Button to start browsing forms
         InlineKeyboardButton browseForms = InlineKeyboardButton.builder()
                 .text(BROWSE_FORMS)
@@ -282,7 +288,40 @@ public class MessageBuilder {
                 )
         );
 
-        return markup;
+        //TODO: Get rid of hardcoded strings
+        KeyboardRow keyboardRowForms = new KeyboardRow();
+        keyboardRowForms.add(
+                KeyboardButton.builder()
+                        .text("Смотреть анкеты")
+                        .build());
+
+        KeyboardRow keyboardRowSelf = new KeyboardRow();
+        keyboardRowSelf.add(
+                KeyboardButton.builder()
+                        .text("Моя анкета")
+                        .build());
+
+        KeyboardRow keyboardRowSelfEdit = new KeyboardRow();
+        keyboardRowSelfEdit.add(
+                KeyboardButton.builder()
+                        .text("Изменить анкету")
+                        .build());
+
+        KeyboardRow keyboardRowLikes = new KeyboardRow();
+        keyboardRowLikes.add(
+                KeyboardButton.builder()
+                        .text("Мои симпатии")
+                        .build());
+
+        return ReplyKeyboardMarkup.builder().keyboard(
+                        List.of(
+                                keyboardRowForms,
+                                keyboardRowSelf,
+                                keyboardRowSelfEdit,
+                                keyboardRowLikes))
+                .resizeKeyboard(true)
+                .oneTimeKeyboard(true)
+                .build();
     }
 
     public ReplyKeyboardMarkup getEmptyKeyboard() {

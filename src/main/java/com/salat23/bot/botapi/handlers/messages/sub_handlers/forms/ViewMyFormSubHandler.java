@@ -36,6 +36,9 @@ public class ViewMyFormSubHandler implements IMessageSubHandler {
     @Override
     public boolean handle(User user, String message) throws TelegramApiException {
 
+        user.setState(UserState.FORM_MY_VIEWING);
+        userRepository.save(user);
+
         String myFormMessage = messageBuilder
                 .getMessageTextByType(ResponseTemplateTypes.FORM_SUGGESTED, user.getGender());
         myFormMessage = messageBuilder

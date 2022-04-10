@@ -29,10 +29,18 @@ public class BioReceiveSubHandler implements IMessageSubHandler {
     @Override
     public boolean handle(User user, String message) throws TelegramApiException {
 
-            //Set the name and user state
-            user.setBio(message);
+        //TODO: get rid of hardcoded strings
+        if (message.equals("Оставить текущее") && user.getBio() != null) {
             user.setState(UserState.ASK_CONFIRMING_BIO);
             userRepository.save(user);
+            return true;
+        }
+
+
+        //Set the bio and user state
+        user.setBio(message);
+        user.setState(UserState.ASK_CONFIRMING_BIO);
+        userRepository.save(user);
 
         //Returning true because we need to switch the state
         return true;

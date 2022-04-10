@@ -32,6 +32,31 @@ public class MenuSubHandler implements IMessageSubHandler {
     @Override
     public boolean handle(User user, String message) throws TelegramApiException {
 
+        switch (message) {
+            case "Смотреть анкеты":
+                if (user.getLastSuggestion() == null)
+                    user.setState(UserState.FORM_NEXT);
+                else
+                    user.setState(UserState.FORM_CONTINUE);
+                userRepository.save(user);
+                return true;
+            case "Моя анкета":
+                user.setState(UserState.FORM_MY);
+                userRepository.save(user);
+
+                return true;
+            case "Изменить анкету":
+                user.setState(UserState.START_REGISTRATION);
+                userRepository.save(user);
+
+                return true;
+            case "Мои симпатии":
+                user.setState(UserState.LIKES_NEXT);
+                userRepository.save(user);
+
+                return true;
+        }
+
         String menuResponse = messageBuilder
                 .getMessageTextByType(ResponseTemplateTypes.MENU_OPTIONS_SUGGEST, user.getGender());
         menuResponse = messageBuilder.buildAssembleText(new MessageContext(user), menuResponse);

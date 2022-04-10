@@ -9,6 +9,7 @@ import com.salat23.bot.botapi.message_tools.ResponseTemplateTypes;
 import com.salat23.bot.models.User;
 import com.salat23.bot.repository.UserRepository;
 import org.springframework.stereotype.Component;
+import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 import java.util.List;
@@ -38,8 +39,12 @@ public class TargetAgeMaxAskSubHandler implements IMessageSubHandler {
         String response = messageBuilder
                 .getMessageTextByType(ResponseTemplateTypes.TARGET_AGE_MAX_ASK, user.getGender());
         response = messageBuilder.buildAssembleText(new MessageContext(user), response);
+        SendMessage sendMessage = messageBuilder.createMessage(user, response);
 
-        Bot.getInstance().execute(messageBuilder.createMessage(user, response));
+        if (user.getTargetMaxAge() != null)
+            sendMessage.setReplyMarkup(messageBuilder.getPreviousOptionKeyboard(user.getTargetMaxAge().toString()));
+
+        Bot.getInstance().execute(sendMessage);
 
         return false;
     }
