@@ -145,7 +145,6 @@ public class MessageBuilder {
 
         return ReplyKeyboardMarkup.builder()
                 .keyboardRow(keyboardRow)
-                .oneTimeKeyboard(true)
                 .resizeKeyboard(true)
                 .build();
     }
@@ -170,7 +169,6 @@ public class MessageBuilder {
 
         return ReplyKeyboardMarkup.builder()
                 .keyboard(List.of(keyboardLikeDislike, keyboardBackToMenu))
-                .oneTimeKeyboard(true)
                 .resizeKeyboard(true)
                 .build();
     }
@@ -185,6 +183,7 @@ public class MessageBuilder {
 
         return ReplyKeyboardMarkup.builder().keyboardRow(keyboardRow).resizeKeyboard(true).build();
     }
+
 
 
     public InlineKeyboardMarkup getLikeReceivedKeyboard() {
@@ -213,7 +212,7 @@ public class MessageBuilder {
                         .build()
         );
 
-        return ReplyKeyboardMarkup.builder().keyboardRow(keyboardRow).oneTimeKeyboard(true).resizeKeyboard(true).build();
+        return ReplyKeyboardMarkup.builder().keyboardRow(keyboardRow).resizeKeyboard(true).build();
     }
 
     public ReplyKeyboardMarkup getPreviousOptionKeyboard(String previousOption) {
@@ -226,7 +225,6 @@ public class MessageBuilder {
 
         return ReplyKeyboardMarkup.builder()
                 .keyboardRow(keyboardRow)
-                .oneTimeKeyboard(true)
                 .resizeKeyboard(true)
                 .build();
     }
@@ -246,48 +244,12 @@ public class MessageBuilder {
 
         return ReplyKeyboardMarkup.builder()
                 .keyboardRow(keyboardRow)
-                .oneTimeKeyboard(true)
                 .resizeKeyboard(true)
                 .build();
     }
 
 
     public ReplyKeyboardMarkup getMenuKeyboard() {
-        InlineKeyboardMarkup markup = new InlineKeyboardMarkup();
-
-        //Button for viewing your form
-        InlineKeyboardButton viewMyFormButton = InlineKeyboardButton.builder()
-                .text(VIEW_MY_FORM_TEXT)
-                .callbackData(Callbacks.VIEW_MY_FORM.getCallback())
-                .build();
-
-        //Button for editing your form
-        InlineKeyboardButton editMyForm = InlineKeyboardButton.builder()
-                .text(EDIT_MY_FORM_TEXT)
-                .callbackData(Callbacks.EDIT_MY_FORM.getCallback())
-                .build();
-
-        //Button to start browsing forms
-        InlineKeyboardButton browseForms = InlineKeyboardButton.builder()
-                .text(BROWSE_FORMS)
-                .callbackData(Callbacks.BROWSE_FORMS.getCallback())
-                .build();
-
-        //Button to view who liked you
-        InlineKeyboardButton browseLikes = InlineKeyboardButton.builder()
-                .text(BROWSE_LIKES)
-                .callbackData(Callbacks.BROWSE_LIKES.getCallback())
-                .build();
-
-        markup.setKeyboard(
-                List.of(
-                        List.of(browseForms),
-                        List.of(viewMyFormButton),
-                        List.of(editMyForm),
-                        List.of(browseLikes)
-                )
-        );
-
         //TODO: Get rid of hardcoded strings
         KeyboardRow keyboardRowForms = new KeyboardRow();
         keyboardRowForms.add(
@@ -320,7 +282,6 @@ public class MessageBuilder {
                                 keyboardRowSelfEdit,
                                 keyboardRowLikes))
                 .resizeKeyboard(true)
-                .oneTimeKeyboard(true)
                 .build();
     }
 
