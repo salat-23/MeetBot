@@ -103,7 +103,7 @@
     </Response>
 
     <Response type="genderAfter">
-        <Any>Теперь твой пол - %gender%?</Any>
+        <Any>Теперь твой пол - %gender%</Any>
         <Male>Ладно, пацанчик)</Male>
         <Female>Ладно, девка так девка</Female>
     </Response>
@@ -286,7 +286,7 @@
     </Response>
 
     <Response type="formSuggest">
-        <Any>%o_name%, %o_age%, %o_gender% - "%o_bio%"</Any>
+        <Any>%o_name%, %o_age%, %o_gender% - %o_bio%</Any>
     </Response>
 
     <Response type="notificationLiked">
