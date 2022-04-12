@@ -195,6 +195,15 @@ public class FormReceiveActionSubHandler implements IMessageSubHandler {
                 return true;
             }
         }
+        //TODO: NO HARDCODED STRINGS!!!!! >:(((
+        if (user.getState() == UserState.FORM_MY_VIEWING) {
+            if (message.equals("Изменить анкету")) {
+                user.setState(UserState.START_REGISTRATION);
+                userRepository.save(user);
+
+                return true;
+            }
+        }
 
         if (message.equals("Назад в меню")) {
             user.setState(UserState.IN_MENU);

@@ -174,6 +174,14 @@ public class MessageBuilder {
     }
 
     public ReplyKeyboardMarkup getMyFormKeyboard() {
+
+        KeyboardRow keyboardRowChange = new KeyboardRow();
+        keyboardRowChange.add(
+                KeyboardButton.builder()
+                        .text(EDIT_MY_FORM_TEXT)
+                        .build()
+        );
+
         KeyboardRow keyboardRow = new KeyboardRow();
         keyboardRow.add(
                 KeyboardButton.builder()
@@ -181,7 +189,7 @@ public class MessageBuilder {
                         .build()
         );
 
-        return ReplyKeyboardMarkup.builder().keyboardRow(keyboardRow).resizeKeyboard(true).build();
+        return ReplyKeyboardMarkup.builder().keyboard(List.of(keyboardRowChange, keyboardRow)).resizeKeyboard(true).build();
     }
 
 
@@ -263,12 +271,6 @@ public class MessageBuilder {
                         .text("Моя анкета")
                         .build());
 
-        KeyboardRow keyboardRowSelfEdit = new KeyboardRow();
-        keyboardRowSelfEdit.add(
-                KeyboardButton.builder()
-                        .text("Изменить анкету")
-                        .build());
-
         KeyboardRow keyboardRowLikes = new KeyboardRow();
         keyboardRowLikes.add(
                 KeyboardButton.builder()
@@ -279,7 +281,6 @@ public class MessageBuilder {
                         List.of(
                                 keyboardRowForms,
                                 keyboardRowSelf,
-                                keyboardRowSelfEdit,
                                 keyboardRowLikes))
                 .resizeKeyboard(true)
                 .build();

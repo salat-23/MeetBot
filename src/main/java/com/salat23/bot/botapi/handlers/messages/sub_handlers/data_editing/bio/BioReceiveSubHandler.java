@@ -39,7 +39,7 @@ public class BioReceiveSubHandler implements IMessageSubHandler {
 
         //Set the bio and user state
         user.setBio(message);
-        user.setState(UserState.ASK_CONFIRMING_BIO);
+        user.setState(UserState.ASK_PHOTO);
         userRepository.save(user);
 
         //Returning true because we need to switch the state

@@ -30,8 +30,9 @@ public class CompleteRegistrationSubHandler implements IMessageSubHandler {
     @Override
     public boolean handle(User user, String message) throws TelegramApiException {
 
-        user.setRegistrationDate(LocalDate.now());
-        user.setState(UserState.IN_MENU);
+        if (user.getRegistrationDate() != null)
+            user.setRegistrationDate(LocalDate.now());
+        user.setState(UserState.FORM_MY);
         user.setIsSearchable(true);
         userRepository.save(user);
 

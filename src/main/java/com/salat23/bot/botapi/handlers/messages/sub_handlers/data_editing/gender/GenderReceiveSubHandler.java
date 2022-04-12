@@ -33,12 +33,12 @@ public class GenderReceiveSubHandler implements IMessageSubHandler {
         if (message.equals(GenderEnum.MAN.getShortName())) {
             user.setGender(GenderEnum.MAN);
             user.setTarget(GenderEnum.WOMAN);
-            user.setState(UserState.ASK_CONFIRMING_GENDER);
+            user.setState(UserState.ASK_AGE);
             userRepository.save(user);
         } else if (message.equals(GenderEnum.WOMAN.getShortName())) {
             user.setGender(GenderEnum.WOMAN);
             user.setTarget(GenderEnum.MAN);
-            user.setState(UserState.ASK_CONFIRMING_GENDER);
+            user.setState(UserState.ASK_AGE);
             userRepository.save(user);
         } else {
 

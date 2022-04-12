@@ -71,7 +71,7 @@ public class AgeReceiveSubHandler implements IMessageSubHandler {
             }
             case OK: {
                 user.setAge(ageConfirmer.getLastCheckedAge());
-                user.setState(UserState.ASK_CONFIRMING_AGE);
+                user.setState(UserState.ASK_TARGET_AGE_MIN);
                 userRepository.save(user);
 
                 break;
