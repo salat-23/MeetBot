@@ -31,7 +31,7 @@ public class BioReceiveSubHandler implements IMessageSubHandler {
 
         //TODO: get rid of hardcoded strings
         if (message.equals("Оставить текущее") && user.getBio() != null) {
-            user.setState(UserState.ASK_CONFIRMING_BIO);
+            user.setState(UserState.ASK_PHOTO);
             userRepository.save(user);
             return true;
         }
