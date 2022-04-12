@@ -46,7 +46,7 @@ public class NameReceiveSubHandler implements IMessageSubHandler {
 
             //Set the name and user state
             user.setName(message);
-            user.setState(UserState.ASK_CONFIRMING_NAME);
+            user.setState(UserState.ENTERING_GENDER);
             userRepository.save(user);
         }
         //Returning true because we need to switch the state

@@ -52,7 +52,7 @@ public class CityReceiveSubHandler implements IMessageSubHandler {
             locationRepository.save(userLocation);
             //Saving user
             user.setLocation(userLocation);
-            user.setState(UserState.ASK_CONFIRMING_CITY);
+            user.setState(UserState.ASK_BIO);
             userRepository.save(user);
         }
 

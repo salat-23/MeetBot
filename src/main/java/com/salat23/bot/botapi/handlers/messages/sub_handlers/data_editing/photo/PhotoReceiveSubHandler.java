@@ -32,7 +32,7 @@ public class PhotoReceiveSubHandler implements IMessageSubHandler {
 
         //TODO: get rid of hardcoded strings
         if (message.equals("Оставить текущее") && user.getPhoto() != null) {
-            user.setState(UserState.ASK_CONFIRMING_PHOTO);
+            user.setState(UserState.COMPLETE_REGISTRATION);
             userRepository.save(user);
             return true;
         }

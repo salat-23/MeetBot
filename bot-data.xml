@@ -8,8 +8,8 @@
 
     <Response type="unknown">
         <Any>Нихуя не понял, но очень интересно!</Any>
-    <!--    <Male>Эй пацан, или может не пацан, я не понял что ты мне написал</Male>
-        <Female>Солнышко, я не понимаю что ты от меня хочешь</Female>-->
+        <Male>Эй пацан, или может не пацан, я не понял что ты мне написал</Male>
+        <Female>Солнышко, я не понимаю что ты от меня хочешь</Female>
     </Response>
 
     <Response type="unknown">
@@ -30,7 +30,6 @@
         <Any>Приветули красотули! Ты готов(a) знакомиться?  </Any>
     </Response>
 
-
     <Response type="nameAsk">
         <Any>Как тебя зовут?</Any>
     </Response>
@@ -48,8 +47,6 @@
     <Response type="nameAsk">
         <Any>Давай начнем, как тебя зовут?</Any>
     </Response>
-
-
 
     <Response type="nameConfirm">
         <Any>Точно хочешь такое имя - %name%?</Any>
@@ -84,7 +81,6 @@
     <Response type="nameWrong">
         <Any>Такое писать нельзя!</Any>
     </Response>
-
 
     <Response type="genderAsk">
         <Any>Кто ты?</Any>
