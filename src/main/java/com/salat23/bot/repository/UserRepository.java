@@ -25,9 +25,19 @@ public interface UserRepository extends JpaRepository<User, Long> {
                     " and searcher.age <= target.target_max_age" +
                     " and searcher.age >= target.target_min_age" +
                     " and target.id not in (select v.to_id from views v where from_id = searcher.id)" +
+                    " and target.id not in (select m.from_id from matches m where m.to_id = searcher.id and m.is_ignored = true)" +
                     " order by random() * (1 + target_boost.popularity_boost)" +
                     "limit 1")
     User findForm(@Param("userId") Long chatId);
+
+    @Query(nativeQuery = true, value = "select count(*) from users")
+    Integer getTotalUsersCount();
+    @Query(nativeQuery = true, value = "select count(*) from users where state<>'RESTORED_USER'")
+    Integer getTotalActiveUsersCount();
+    @Query(nativeQuery = true, value = "select count(*) from users where gender='MAN'")
+    Integer getMaleUsersCount();
+    @Query(nativeQuery = true, value = "select count(*) from users where gender='WOMAN'")
+    Integer getFemaleUsersCount();
 
     @Query(nativeQuery = true, value =
             "select *\n" +
@@ -35,7 +45,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
                     "    join matches m on target.id = m.from_id\n" +
                     "    join users searcher on searcher.id = :userId\n" +
                     "where m.to_id = searcher.id\n" +
-                    "and target.id not in (select v.to_id from views v where v.from_id = searcher.id)\n" +
+                    "and m.is_ignored = false\n" +
                     "order by m.creation_date\n" +
                     "limit 1")
     User findEarliestLiker(@Param("userId") Long chatId);

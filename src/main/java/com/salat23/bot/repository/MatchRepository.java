@@ -24,4 +24,6 @@ public interface MatchRepository extends JpaRepository<Match, Long> {
     value = "select * from matches m where to_id = :userId and is_ignored = 'f' limit 1")
     Match getFirstStackMatch(@Param("userId") Long userId);
 
+
+
 }

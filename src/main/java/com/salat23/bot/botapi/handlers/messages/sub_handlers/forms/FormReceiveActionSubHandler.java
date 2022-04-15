@@ -183,6 +183,10 @@ public class FormReceiveActionSubHandler implements IMessageSubHandler {
 
             //Dislike
             if (message.equals("\uD83D\uDC4E")) {
+                Match match = matchRepository.getByKey_ToAndKey_From(user, user.getLastSuggestion());
+                match.setIsIgnored(true);
+                matchRepository.save(match);
+
                 User lastSuggested = user.getLastSuggestion();
 
                 //Create and save view
