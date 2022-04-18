@@ -1,17 +1,12 @@
 package com.salat23.bot.controller;
 
-import com.salat23.bot.botapi.UserState;
-import com.salat23.bot.botapi.backup.RestoreIdsFromTxt;
-import com.salat23.bot.botapi.notifications.NotificationManager;
 import com.salat23.bot.entity.BaseRequest;
-import com.salat23.bot.entity.SimpleNotifyRequest;
 import com.salat23.bot.entity.TotalInfo;
+import com.salat23.bot.repository.MatchRepository;
 import com.salat23.bot.repository.UserRepository;
+import com.salat23.bot.repository.ViewRepository;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RequestMapping("/api/v1")
 @RestController
@@ -24,12 +19,16 @@ public class BotActionsController {
 
     //private final RestoreIdsFromTxt idsFromTxtRestorer;
     private final UserRepository userRepository;
+    private final MatchRepository matchRepository;
+    private final ViewRepository viewRepository;
 
     public BotActionsController(
             //RestoreIdsFromTxt idsFromTxtRestorer,
-            UserRepository userRepository) {
+            UserRepository userRepository, MatchRepository matchRepository, ViewRepository viewRepository) {
         //this.idsFromTxtRestorer = idsFromTxtRestorer;
         this.userRepository = userRepository;
+        this.matchRepository = matchRepository;
+        this.viewRepository = viewRepository;
     }
 
   /*  @PostMapping("/restore/ids")
@@ -55,6 +54,21 @@ public class BotActionsController {
         Integer totalWoman = userRepository.getFemaleUsersCount();
 
         return new TotalInfo(totalAmount, totalActiveAmount, totalMan, totalWoman);
+    }
+
+    @PostMapping("/actions/clear")
+    public String clearMatchesAndViews(@RequestBody BaseRequest request) {
+        if (isCredentialsCorrect(request)) {
+            matchRepository.deleteAll();
+            viewRepository.deleteAll();
+        }
+
+        return "Wrong creds";
+    }
+
+    private boolean isCredentialsCorrect(BaseRequest baseRequest) {
+        return baseRequest.getPassword().equals(password)
+                && baseRequest.getLogin().equals(login);
     }
 
 }
