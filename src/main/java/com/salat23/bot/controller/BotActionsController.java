@@ -56,19 +56,10 @@ public class BotActionsController {
         return new TotalInfo(totalAmount, totalActiveAmount, totalMan, totalWoman);
     }
 
-    @PostMapping("/actions/clear")
-    public String clearMatchesAndViews(@RequestBody BaseRequest request) {
-        if (isCredentialsCorrect(request)) {
-            matchRepository.deleteAll();
-            viewRepository.deleteAll();
-        }
-
-        return "Wrong creds";
+    @GetMapping("/test")
+    public String testHandle() {
+        return "OK";
     }
 
-    private boolean isCredentialsCorrect(BaseRequest baseRequest) {
-        return baseRequest.getPassword().equals(password)
-                && baseRequest.getLogin().equals(login);
-    }
 
 }

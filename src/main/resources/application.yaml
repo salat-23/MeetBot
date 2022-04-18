@@ -12,6 +12,10 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+  security:
+    user:
+      name: muhrbot
+      password: 1234oijh6134jik
 server:
   port: 8080
 
