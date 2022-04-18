@@ -128,6 +128,7 @@ public class FormReceiveActionSubHandler implements IMessageSubHandler {
 
                 //Create and save match and view
                 Match match = new Match(user, lastSuggested);
+                match.setIsIgnored(true);
                 View view = new View(user, lastSuggested);
 
                 viewRepository.save(view);

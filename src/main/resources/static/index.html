@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+</head>
+<body>
+
+<p>Hello dashboard!</p>
+<p id="total_users"></p>
+<p id="total_active_users"></p>
+<p id="total_male"></p>
+<p id="total_female"></p>
+
+</body>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+
+
+    axios.get("/info/total")
+
+</script>
+</html>
