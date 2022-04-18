@@ -16,6 +16,7 @@ spring:
     user:
       name: muhrbot
       password: 1234oijh6134jik
+      roles: admin
 server:
   port: 8080
 
