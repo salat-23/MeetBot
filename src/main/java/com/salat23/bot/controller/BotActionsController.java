@@ -46,7 +46,7 @@ public class BotActionsController {
     }*/
 
     @GetMapping("/info/total")
-    public TotalInfo getBotInfo(@RequestBody BaseRequest request) {
+    public TotalInfo getBotInfo() {
 
         Integer totalAmount = userRepository.getTotalUsersCount();
         Integer totalActiveAmount = userRepository.getTotalActiveUsersCount();
