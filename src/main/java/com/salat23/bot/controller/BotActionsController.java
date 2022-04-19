@@ -8,6 +8,8 @@ import com.salat23.bot.repository.ViewRepository;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+
 @RequestMapping("/api/v1")
 @RestController
 public class BotActionsController {
@@ -52,8 +54,15 @@ public class BotActionsController {
         Integer totalActiveAmount = userRepository.getTotalActiveUsersCount();
         Integer totalMan = userRepository.getMaleUsersCount();
         Integer totalWoman = userRepository.getFemaleUsersCount();
+        Integer latestDayRegistrationMale = userRepository.getRegisteredMaleAfter(LocalDate.now().minusDays(1));
+        Integer latestDayRegistrationFemale = userRepository.getRegisteredMaleAfter(LocalDate.now().minusDays(1));
 
-        return new TotalInfo(totalAmount, totalActiveAmount, totalMan, totalWoman);
+        return new TotalInfo(totalAmount,
+                totalActiveAmount,
+                totalMan,
+                totalWoman,
+                latestDayRegistrationMale,
+                latestDayRegistrationFemale);
     }
 
     @GetMapping("/test")

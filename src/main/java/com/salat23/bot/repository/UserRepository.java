@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -38,6 +39,14 @@ public interface UserRepository extends JpaRepository<User, Long> {
     Integer getMaleUsersCount();
     @Query(nativeQuery = true, value = "select count(*) from users where gender='WOMAN'")
     Integer getFemaleUsersCount();
+
+    @Query(nativeQuery = true, value = "" +
+            "select count(*) from users where registration_date >= :date::date and gender = 'MAN'")
+    Integer getRegisteredMaleAfter(LocalDate date);
+
+    @Query(nativeQuery = true, value = "" +
+            "select count(*) from users where registration_date >= :date::date and gender = 'WOMAN'")
+    Integer getRegisteredFemaleAfter(LocalDate date);
 
     @Query(nativeQuery = true, value =
             "select *\n" +
