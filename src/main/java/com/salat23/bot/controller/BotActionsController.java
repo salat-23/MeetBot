@@ -67,7 +67,7 @@ public class BotActionsController {
     }
 
     @GetMapping("/info/registration_dates")
-    public List<LocalDate> getRegistrationDates() {
+    public List<String> getRegistrationDates() {
         return userRepository.getRegistrationDates();
     }
 
