@@ -53,7 +53,7 @@ public class BotActionsController {
     }*/
 
 
-    @PostMapping
+    @PostMapping("/notification/target")
     public String sendNotification(@RequestBody NotificationRequest request) {
         NotificationManager.getInstance().notifyTarget(GenderEnum.valueOf(request.getTarget()), request.getText());
         return "Ok!";
