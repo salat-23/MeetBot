@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @RequestMapping("/api/v1")
 @RestController
@@ -63,6 +64,11 @@ public class BotActionsController {
                 totalWoman,
                 latestDayRegistrationMale,
                 latestDayRegistrationFemale);
+    }
+
+    @GetMapping("/info/registration_dates")
+    public List<LocalDate> getRegistrationDates() {
+        return userRepository.getRegistrationDates();
     }
 
     @GetMapping("/test")
