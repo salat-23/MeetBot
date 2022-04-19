@@ -4,7 +4,8 @@ public enum NotificationType {
 
     LIKE_RECEIVED,
     MUTUAL_LIKE_RECEIVED,
-    RESTORED_MESSAGE
+    RESTORED_MESSAGE,
+    PROMO_MESSAGE
 
 
 }

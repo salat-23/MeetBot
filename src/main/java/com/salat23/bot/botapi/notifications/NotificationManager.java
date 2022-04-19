@@ -3,6 +3,7 @@ package com.salat23.bot.botapi.notifications;
 import com.salat23.bot.botapi.Bot;
 import com.salat23.bot.botapi.UserState;
 import com.salat23.bot.botapi.message_tools.MessageBuilder;
+import com.salat23.bot.models.GenderEnum;
 import com.salat23.bot.models.Notification;
 import com.salat23.bot.models.User;
 import com.salat23.bot.repository.UserRepository;
@@ -37,7 +38,13 @@ public class NotificationManager {
 
     public void sendNotification(Notification notification) {
         try {
-            if (isAcceptableState(notification.getRecipient().getState())) {
+            if (notification.getType() == NotificationType.PROMO_MESSAGE) {
+                SendMessage sendMessage = messageBuilder
+                        .createMessage(notification.getRecipient(), notification.getText());
+                sendMessage.enableMarkdown(true);
+                Bot.getInstance().execute(sendMessage);
+            }
+            else if (isAcceptableState(notification.getRecipient().getState())) {
                 SendMessage sendMessage = messageBuilder
                         .createMessage(notification.getRecipient(), notification.getText());
                 if (notification.getType() == NotificationType.LIKE_RECEIVED)
@@ -69,6 +76,25 @@ public class NotificationManager {
             if (users.getTotalElements() < size) break;
         }
     }
+
+    public void notifyTarget(GenderEnum target, String message) {
+        final int size = 100;
+
+        for(int i = 0;;i++) {
+            Pageable pageRequest = PageRequest.of(i, size);
+            Page<User> users = userRepository.findAll(pageRequest);
+            users.get().forEach(user -> {
+                if (target == user.getGender()) {
+                    Notification notification =
+                            new Notification(user,
+                                    NotificationType.PROMO_MESSAGE, message);
+                    sendNotification(notification);
+                }
+            });
+            if (users.getTotalElements() < size) break;
+        }
+    }
+
 
     private boolean isAcceptableState(UserState state) {
         switch (state) {

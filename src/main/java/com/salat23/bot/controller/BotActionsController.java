@@ -1,7 +1,11 @@
 package com.salat23.bot.controller;
 
+import com.salat23.bot.botapi.UserState;
+import com.salat23.bot.botapi.notifications.NotificationManager;
 import com.salat23.bot.entity.BaseRequest;
+import com.salat23.bot.entity.NotificationRequest;
 import com.salat23.bot.entity.TotalInfo;
+import com.salat23.bot.models.GenderEnum;
 import com.salat23.bot.repository.MatchRepository;
 import com.salat23.bot.repository.UserRepository;
 import com.salat23.bot.repository.ViewRepository;
@@ -47,6 +51,15 @@ public class BotActionsController {
         NotificationManager.getInstance().notifyAll(List.of(UserState.RESTORED_USER), request.getMessage());
         return ResponseEntity.ok().build();
     }*/
+
+
+    @PostMapping
+    public String sendNotification(@RequestBody NotificationRequest request) {
+        NotificationManager.getInstance().notifyTarget(GenderEnum.valueOf(request.getTarget()), request.getText());
+        return "Ok!";
+    }
+
+
 
     @GetMapping("/info/total")
     public TotalInfo getBotInfo() {
