@@ -55,7 +55,7 @@ public class BotActionsController {
         Integer totalMan = userRepository.getMaleUsersCount();
         Integer totalWoman = userRepository.getFemaleUsersCount();
         Integer latestDayRegistrationMale = userRepository.getRegisteredMaleAfter(LocalDate.now().minusDays(1));
-        Integer latestDayRegistrationFemale = userRepository.getRegisteredMaleAfter(LocalDate.now().minusDays(1));
+        Integer latestDayRegistrationFemale = userRepository.getRegisteredFemaleAfter(LocalDate.now().minusDays(1));
 
         return new TotalInfo(totalAmount,
                 totalActiveAmount,
