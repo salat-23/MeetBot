@@ -48,7 +48,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
             "select count(*) from users where registration_date >= :date and gender = 'WOMAN'")
     Integer getRegisteredFemaleAfter(@Param("date") LocalDate date);
 
-    @Query(nativeQuery = true, value = "select registration_date from users where registration_date is not null")
+    @Query(nativeQuery = true, value = "select registration_date from users where registration_date is not null and gender = 'WOMAN'")
     List<String> getRegistrationDates();
 
     @Query(nativeQuery = true, value =
