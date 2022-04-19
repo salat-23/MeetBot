@@ -41,11 +41,11 @@ public interface UserRepository extends JpaRepository<User, Long> {
     Integer getFemaleUsersCount();
 
     @Query(nativeQuery = true, value = "" +
-            "select count(*) from users where registration_date >= :date::date and gender = 'MAN'")
+            "select count(*) from users where registration_date >= :date and gender = 'MAN'")
     Integer getRegisteredMaleAfter(@Param("date") LocalDate date);
 
     @Query(nativeQuery = true, value = "" +
-            "select count(*) from users where registration_date >= :date::date and gender = 'WOMAN'")
+            "select count(*) from users where registration_date >= :date and gender = 'WOMAN'")
     Integer getRegisteredFemaleAfter(@Param("date") LocalDate date);
 
     @Query(nativeQuery = true, value =
