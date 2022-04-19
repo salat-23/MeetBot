@@ -53,13 +53,11 @@ public class BotActionsController {
     }*/
 
 
-    @PostMapping("/notification/target")
+    @GetMapping("/notification/target")
     public String sendNotification(@RequestBody NotificationRequest request) {
         NotificationManager.getInstance().notifyTarget(GenderEnum.valueOf(request.getTarget()), request.getText());
         return "Ok!";
     }
-
-
 
     @GetMapping("/info/total")
     public TotalInfo getBotInfo() {
