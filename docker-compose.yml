@@ -10,6 +10,7 @@ services:
       - "db:db"
     environment:
       - CONNECTION_STRING=jdbc:postgresql://db:5432/postgres
+      - PROXY_ENABLED=false
       - BOT_TOKEN=${BOT_TOKEN}
       - PROXY_HOST=${PROXY_HOST}
       - PROXY_PORT=${PROXY_PORT}
@@ -21,7 +22,7 @@ services:
     ports:
       - "8080:8080"
   db:
-    image: 'postgres:13.1-alpine'
+    image: 'postgres:13.3-alpine'
     container_name: dbtgbot
     volumes:
       - postgres_volume:/var/lib/postgresql/data
