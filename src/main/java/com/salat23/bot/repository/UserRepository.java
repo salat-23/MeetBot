@@ -31,6 +31,20 @@ public interface UserRepository extends JpaRepository<User, Long> {
                     "limit 1")
     User findForm(@Param("userId") Long chatId);
 
+
+    @Query(nativeQuery = true, value =
+            "select *\n" +
+                    "from users target\n" +
+                    "    join matches m on target.id = m.from_id\n" +
+                    "    join users searcher on searcher.id = :userId\n" +
+                    "where m.to_id = searcher.id\n" +
+                    "and m.is_ignored = false\n" +
+                    "and target.id not in (select v.to_id from views v where from_id = searcher.id)\n" +
+                    "and target.id not in (select m.from_id from matches m where m.to_id = searcher.id and m.is_ignored = true)\n" +
+                    "order by m.creation_date\n" +
+                    "limit 1")
+    User findEarliestLiker(@Param("userId") Long chatId);
+
     @Query(nativeQuery = true, value = "select count(*) from users")
     Integer getTotalUsersCount();
     @Query(nativeQuery = true, value = "select count(*) from users where state<>'RESTORED_USER'")
@@ -51,16 +65,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @Query(nativeQuery = true, value = "select registration_date from users where registration_date is not null and gender = 'WOMAN'")
     List<String> getRegistrationDates();
 
-    @Query(nativeQuery = true, value =
-            "select *\n" +
-                    "from users target\n" +
-                    "    join matches m on target.id = m.from_id\n" +
-                    "    join users searcher on searcher.id = :userId\n" +
-                    "where m.to_id = searcher.id\n" +
-                    "and m.is_ignored = false\n" +
-                    "order by m.creation_date\n" +
-                    "limit 1")
-    User findEarliestLiker(@Param("userId") Long chatId);
+
 
 
 }

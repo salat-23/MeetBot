@@ -22,6 +22,8 @@ public class Beans {
     private final LocationHandler locationHandler;
     private final MessageHandler messageHandler;
 
+    @Value("${bot.proxy.enabled}")
+    private Boolean proxyEnabled;
     @Value("${bot.proxy.host}")
     private String proxyHost;
     @Value("${bot.proxy.port}")
@@ -58,16 +60,18 @@ public class Beans {
     //Proxy bean
     @Bean
     public DefaultBotOptions botOptions() {
-        Authenticator.setDefault(new Authenticator() {
-            @Override
-            protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(proxyLogin, proxyPassword.toCharArray());
-            }
-        });
         DefaultBotOptions botOptions = new DefaultBotOptions();
-        botOptions.setProxyHost(proxyHost);
-        botOptions.setProxyPort(Integer.parseInt(proxyPort));
-        botOptions.setProxyType(DefaultBotOptions.ProxyType.SOCKS5);
+        if (proxyEnabled) {
+            Authenticator.setDefault(new Authenticator() {
+                @Override
+                protected PasswordAuthentication getPasswordAuthentication() {
+                    return new PasswordAuthentication(proxyLogin, proxyPassword.toCharArray());
+                }
+            });
+            botOptions.setProxyHost(proxyHost);
+            botOptions.setProxyPort(Integer.parseInt(proxyPort));
+            botOptions.setProxyType(DefaultBotOptions.ProxyType.SOCKS5);
+        }
         return botOptions;
     }
 
